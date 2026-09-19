@@ -1,3 +1,13 @@
+# Actuele update: ts_gemertmap 1.0.6
+
+Lees UPDATE-INSTALLATIE.md voor deze update en GITHUB.md voor het publiceren en
+later invullen van je echte repository. Script- en configversie zijn 1.0.6.
+Nieuwe clientexports geven de kaartgebiedsnaam en dichtstbijzijnde postcode aan
+politiemeldingen in ts_bridge 0.0.6. De kaart blijft standalone.
+
+Dit pakket bevat alleen wijzigingen; bestaande kaarttextures en postcodegegevens
+blijven staan. Hieronder staat de oorspronkelijke kaartdocumentatie van 1.0.5.
+
 # ts_gemertmap — Gemert RP — 1.0.5
 
 Zelfstandige FiveM-resource met satellietkaart voor minimap en grote pauzemap.

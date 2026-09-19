@@ -23,8 +23,10 @@ local raw = LoadResourceFile(GetCurrentResourceName(), 'postcodes.json')
 local ok, data = pcall(json.decode, raw or '')
 if ok and type(data) == 'table' then
     for _, postal in ipairs(data) do
-        local key = normalize(postal.code)
-        if key and type(postal.x) == 'number' and type(postal.y) == 'number' then
+        local key = type(postal) == 'table' and normalize(postal.code)
+        if key and key ~= '' and type(postal.x) == 'number' and type(postal.y) == 'number'
+            and postal.x == postal.x and postal.y == postal.y
+            and math.abs(postal.x) ~= math.huge and math.abs(postal.y) ~= math.huge then
             lookup[key] = postal
             postcodes[#postcodes + 1] = postal
         end
@@ -32,6 +34,34 @@ if ok and type(data) == 'table' then
 else
     print('[ts_gemertmap] postcodes.json ontbreekt of bevat ongeldige JSON.')
 end
+
+-- Clientexports gebruiken de incidentpositie, nooit impliciet de eigen speler.
+local function finite(n)
+    return type(n) == 'number' and n == n and math.abs(n) ~= math.huge
+end
+local function nearestAt(coords)
+    if (type(coords) ~= 'table' and type(coords) ~= 'vector3')
+        or not finite(coords.x) or not finite(coords.y) then return nil end
+    local nearest, best
+    for _, postal in ipairs(postcodes) do
+        local distance = (coords.x - postal.x)^2 + (coords.y - postal.y)^2
+        if not best or distance < best then nearest, best = postal, distance end
+    end
+    if not nearest then return nil end
+    return { code = tostring(nearest.code), x = nearest.x, y = nearest.y, distance = math.sqrt(best) }
+end
+exports('GetNearestPostcode', nearestAt)
+exports('GetLocation', function(coords)
+    if (type(coords) ~= 'table' and type(coords) ~= 'vector3')
+        or not finite(coords.x) or not finite(coords.y) or not finite(coords.z) then return nil end
+    local zone = GetNameOfZone(coords.x, coords.y, coords.z)
+    local name = type(Config.ZoneNames) == 'table' and Config.ZoneNames[zone] or nil
+    if type(name) ~= 'string' or name == '' then
+        name = zone and GetLabelText(zone) or nil
+        if name == 'NULL' or name == '' then name = zone end
+    end
+    return { area = name, zone = zone, postcode = nearestAt(coords) }
+end)
 
 RegisterCommand('poscode', function(_, args)
     local input = args[1]
@@ -46,13 +76,7 @@ RegisterCommand('poscode', function(_, args)
     end
     if not input then
         local coords = GetEntityCoords(PlayerPedId())
-        local nearest, bestDistance
-        for _, postal in ipairs(postcodes) do
-            local distance = (coords.x - postal.x)^2 + (coords.y - postal.y)^2
-            if not bestDistance or distance < bestDistance then
-                nearest, bestDistance = postal, distance
-            end
-        end
+        local nearest = nearestAt(coords)
         notify(('Dichtstbijzijnde postcode: %s. Gebruik /poscode [nummer] voor een route.'):format(nearest.code))
         return
     end
