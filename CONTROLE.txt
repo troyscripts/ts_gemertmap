@@ -1,0 +1,8 @@
+Lua 5.4 syntaxiscontrole: alle 5 Lua-bestanden geslaagd.
+946 unieke numerieke postcodeverwijzingen gecontroleerd.
+Command getest met nagebootste FiveM-functies: postcode kiezen, voorloopnullen,
+route vervangen, ongeldige invoer, dichtstbijzijnde postcode, verwijderen en stop-opruiming.
+Server-opstartmelding getest: alleen eigen resource, TroyScripts en versie 1.0.5.
+12 YTD-texturen opnieuw uitgelezen en gecontroleerd; metadata en blokken buiten labels ongewijzigd.
+46 vaste kaartnamen visueel gecontroleerd in uitgelezen texturen.
+Zip-integriteit gecontroleerd. Geen live FiveM-test uitgevoerd.

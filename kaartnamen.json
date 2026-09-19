@@ -1,0 +1,324 @@
+[
+  {
+    "zone": "PALETO",
+    "text": "Elsendorp",
+    "x": -79.453,
+    "y": 6615.82,
+    "size": 76
+  },
+  {
+    "zone": "PALFOR",
+    "text": "Elsendorpse Bossen",
+    "x": -347.52,
+    "y": 5600.684,
+    "size": 52
+  },
+  {
+    "zone": "NCHU",
+    "text": "Noorderduinen",
+    "x": -2566.758,
+    "y": 4264.746,
+    "size": 52
+  },
+  {
+    "zone": "GALFISH",
+    "text": "Vissersdorp",
+    "x": 3440.566,
+    "y": 4326.27,
+    "size": 52
+  },
+  {
+    "zone": "GRAPES",
+    "text": "Boekel",
+    "x": 2100.234,
+    "y": 4888.77,
+    "size": 76
+  },
+  {
+    "zone": "ALAMO",
+    "text": "De Groote Plas",
+    "x": 1252.09,
+    "y": 4137.305,
+    "size": 76
+  },
+  {
+    "zone": "ZANCUDO",
+    "text": "Defensieterrein",
+    "x": -2153.672,
+    "y": 3122.168,
+    "size": 66
+  },
+  {
+    "zone": "CHU",
+    "text": "Duinrand",
+    "x": -3102.891,
+    "y": 1118.262,
+    "size": 54
+  },
+  {
+    "zone": "GREATC",
+    "text": "Buitengebied",
+    "x": -351.914,
+    "y": 2370.703,
+    "size": 56
+  },
+  {
+    "zone": "HARMO",
+    "text": "De Mortel",
+    "x": 764.297,
+    "y": 2818.945,
+    "size": 66
+  },
+  {
+    "zone": "SANDY",
+    "text": "Bakel",
+    "x": 1454.238,
+    "y": 3693.457,
+    "size": 80
+  },
+  {
+    "zone": "WINDF",
+    "text": "Windmolenpark",
+    "x": 2166.152,
+    "y": 2054.297,
+    "size": 54
+  },
+  {
+    "zone": "CHIL",
+    "text": "De Heuvels",
+    "x": -532.09,
+    "y": 916.113,
+    "size": 54
+  },
+  {
+    "zone": "VINE",
+    "text": "Gemert Heuvels",
+    "x": -422.227,
+    "y": 656.836,
+    "size": 62
+  },
+  {
+    "zone": "LACT",
+    "text": "Stuwmeer",
+    "x": 1893.691,
+    "y": 142.676,
+    "size": 54
+  },
+  {
+    "zone": "TATAMO",
+    "text": "Natuurgebied",
+    "x": 2262.832,
+    "y": 445.898,
+    "size": 50
+  },
+  {
+    "zone": "RGLEN",
+    "text": "Groenendaal",
+    "x": -1248.398,
+    "y": 494.238,
+    "size": 42
+  },
+  {
+    "zone": "RICHM",
+    "text": "Landgoedwijk",
+    "x": -1296.738,
+    "y": 155.859,
+    "size": 44
+  },
+  {
+    "zone": "ROCKF",
+    "text": "Heuvelkwartier",
+    "x": -813.34,
+    "y": -77.051,
+    "size": 44
+  },
+  {
+    "zone": "MORN",
+    "text": "Villawijk",
+    "x": -1169.297,
+    "y": -213.281,
+    "size": 40
+  },
+  {
+    "zone": "BURTON",
+    "text": "Gemert Winkelkwartier",
+    "x": -299.18,
+    "y": 59.18,
+    "size": 42
+  },
+  {
+    "zone": "HAWICK",
+    "text": "Handelskwartier",
+    "x": 83.145,
+    "y": 173.438,
+    "size": 40
+  },
+  {
+    "zone": "DTVINE",
+    "text": "Uitgaanskwartier",
+    "x": 601.699,
+    "y": 199.805,
+    "size": 42
+  },
+  {
+    "zone": "EAST_V",
+    "text": "Gemert-Oost",
+    "x": 825.82,
+    "y": -33.105,
+    "size": 42
+  },
+  {
+    "zone": "MIRR",
+    "text": "Parkwijk",
+    "x": 944.473,
+    "y": -292.383,
+    "size": 44
+  },
+  {
+    "zone": "ALTA",
+    "text": "Gemert-Noord",
+    "x": 285.293,
+    "y": -90.234,
+    "size": 40
+  },
+  {
+    "zone": "KOREAT",
+    "text": "Stationskwartier",
+    "x": -338.73,
+    "y": -261.621,
+    "size": 40
+  },
+  {
+    "zone": "DELBE",
+    "text": "Gemert aan Zee",
+    "x": -1613.145,
+    "y": -450.586,
+    "size": 56
+  },
+  {
+    "zone": "DELPE",
+    "text": "Strandwijk",
+    "x": -1169.297,
+    "y": -428.613,
+    "size": 40
+  },
+  {
+    "zone": "DOWNT",
+    "text": "Gemert Centrum",
+    "x": 122.695,
+    "y": -788.965,
+    "size": 58
+  },
+  {
+    "zone": "PBOX",
+    "text": "Gemert Binnenstad",
+    "x": 69.961,
+    "y": -1043.848,
+    "size": 40
+  },
+  {
+    "zone": "TEXTI",
+    "text": "Textielkwartier",
+    "x": 500.625,
+    "y": -692.285,
+    "size": 40
+  },
+  {
+    "zone": "SKID",
+    "text": "Oude Industrie",
+    "x": 535.781,
+    "y": -942.773,
+    "size": 40
+  },
+  {
+    "zone": "LMESA",
+    "text": "Bedrijvenpark",
+    "x": 926.895,
+    "y": -837.305,
+    "size": 42
+  },
+  {
+    "zone": "EBURO",
+    "text": "Industrieterrein Oost",
+    "x": 1454.238,
+    "y": -1672.266,
+    "size": 48
+  },
+  {
+    "zone": "VCANA",
+    "text": "Grachtenwijk",
+    "x": -1033.066,
+    "y": -1219.629,
+    "size": 46
+  },
+  {
+    "zone": "VESP",
+    "text": "Kustwijk",
+    "x": -1112.168,
+    "y": -1628.32,
+    "size": 46
+  },
+  {
+    "zone": "STRAW",
+    "text": "Gemert Spoorzone",
+    "x": 144.668,
+    "y": -1395.41,
+    "size": 40
+  },
+  {
+    "zone": "CHAMH",
+    "text": "Gemert-Zuid",
+    "x": -105.82,
+    "y": -1720.605,
+    "size": 42
+  },
+  {
+    "zone": "DAVIS",
+    "text": "Gemert-Zuidwest",
+    "x": 122.695,
+    "y": -1922.754,
+    "size": 40
+  },
+  {
+    "zone": "RANCHO",
+    "text": "Spoorwijk",
+    "x": 505.02,
+    "y": -1615.137,
+    "size": 42
+  },
+  {
+    "zone": "STAD",
+    "text": "Sportpark",
+    "x": -356.309,
+    "y": -2045.801,
+    "size": 46
+  },
+  {
+    "zone": "MURRI",
+    "text": "Industriehaven",
+    "x": 570.938,
+    "y": -2318.262,
+    "size": 46
+  },
+  {
+    "zone": "AIRP",
+    "text": "Gemert Airport",
+    "x": -1164.902,
+    "y": -2955.469,
+    "size": 70
+  },
+  {
+    "zone": "ELYSIAN",
+    "text": "Haveneiland",
+    "x": -189.316,
+    "y": -2669.824,
+    "size": 46
+  },
+  {
+    "zone": "TERMINA",
+    "text": "Haventerminal",
+    "x": 909.316,
+    "y": -3197.168,
+    "size": 54
+  }
+]

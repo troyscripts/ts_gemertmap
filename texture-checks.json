@@ -1,0 +1,86 @@
+[
+  {
+    "file": "minimap_0_0.ytd",
+    "modified_blocks": 8936,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_0_0.ytd",
+    "modified_blocks": 8936,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_0_1.ytd",
+    "modified_blocks": 9392,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_0_1.ytd",
+    "modified_blocks": 9392,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_1_0.ytd",
+    "modified_blocks": 29562,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_1_0.ytd",
+    "modified_blocks": 29562,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_1_1.ytd",
+    "modified_blocks": 15610,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_1_1.ytd",
+    "modified_blocks": 15610,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_2_0.ytd",
+    "modified_blocks": 19350,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_2_0.ytd",
+    "modified_blocks": 19350,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_2_1.ytd",
+    "modified_blocks": 12458,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  },
+  {
+    "file": "minimap_sea_2_1.ytd",
+    "modified_blocks": 12458,
+    "total_blocks": 1048576,
+    "unchanged_outside_labels": true,
+    "header_and_metadata_preserved": true
+  }
+]
