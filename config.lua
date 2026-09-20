@@ -1,7 +1,7 @@
 Config = {}
 Config.Version = '1.0.6' -- configschema; alleen veranderen bij nieuwe instellingen
 -- Vul later de echte GitHub owner/repository in. Leeg = nog geen netwerkcontrole.
-Config.UpdateCheck = { Enabled = true, Repository = '', Branch = 'main' }
+Config.UpdateCheck = { Enabled = true, Repository = 'https://github.com/troyscripts/ts_gemertmap', Branch = 'main' }
 
 -- Atlas vereist eigen zoomwaarden. Laat andere resources deze niet overschrijven.
 Config.RadarZoom = 1100
