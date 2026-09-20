@@ -1,9 +1,12 @@
 local postcodes, lookup, routeBlip = {}, {}, nil
 
-local function notify(message)
-    BeginTextCommandThefeedPost('STRING')
-    AddTextComponentSubstringPlayerName(message)
-    EndTextCommandThefeedPostTicker(false, false)
+local function notify(message, notifyType)
+    lib.notify({
+        title = 'Gemert Map',
+        description = message,
+        type = notifyType or 'inform',
+        duration = 4000
+    })
 end
 
 local function normalize(value)
@@ -67,11 +70,11 @@ RegisterCommand('postcode', function(_, args)
     local input = args[1]
     if input and input:lower() == 'uit' then
         clearRoute()
-        notify('Postcoderoute verwijderd.')
+        notify('Postcoderoute verwijderd.', 'success')
         return
     end
     if #postcodes == 0 then
-        notify('Postcodes zijn niet beschikbaar. Controleer postcodes.json.')
+        notify('Postcodes zijn niet beschikbaar. Controleer postcodes.json.', 'error')
         return
     end
     if not input then
@@ -83,7 +86,7 @@ RegisterCommand('postcode', function(_, args)
     local key = normalize(input)
     local postal = key and lookup[key]
     if not postal or #args > 1 then
-        notify('Onbekende postcode. Gebruik /postcode [nummer] of /postcode uit.')
+        notify('Onbekende postcode. Gebruik /postcode [nummer] of /postcode uit.', 'error')
         return
     end
     clearRoute()
@@ -97,7 +100,7 @@ RegisterCommand('postcode', function(_, args)
     EndTextCommandSetBlipName(routeBlip)
     SetBlipRoute(routeBlip, true)
     SetBlipRouteColour(routeBlip, 5)
-    notify(('GPS-route ingesteld naar postcode %s.'):format(postal.code))
+    notify(('GPS-route ingesteld naar postcode %s.'):format(postal.code), 'success')
 end, false)
 
 AddEventHandler('onClientResourceStop', function(name)

@@ -1,9 +1,9 @@
-# Actuele update: ts_gemertmap 1.0.6
+# Actuele versie: ts_gemertmap 1.0.7
 
 Lees UPDATE-INSTALLATIE.md voor deze update en GITHUB.md voor het publiceren en
-later invullen van je echte repository. Script- en configversie zijn 1.0.6.
+De scriptversie is 1.0.7. Het configschema blijft 1.0.6, omdat deze update geen nieuwe instellingen toevoegt.
 Nieuwe clientexports geven de kaartgebiedsnaam en dichtstbijzijnde postcode aan
-politiemeldingen in ts_bridge 0.0.6. De kaart blijft standalone.
+politiemeldingen in ts_bridge 0.0.6. Voor gebruikersmeldingen is ox_lib vereist.
 
 Dit pakket bevat alleen wijzigingen; bestaande kaarttextures en postcodegegevens
 blijven staan. Hieronder staat de oorspronkelijke kaartdocumentatie van 1.0.5.
@@ -12,7 +12,7 @@ blijven staan. Hieronder staat de oorspronkelijke kaartdocumentatie van 1.0.5.
 
 Zelfstandige FiveM-resource met satellietkaart voor minimap en grote pauzemap.
 46 Nederlandse plaats- en wijknamen zijn nu daadwerkelijk in de kaarttexturen
-verwerkt. Geen ESX, QBCore, SQL, nc-minimap of internetaanroepen tijdens het spelen.
+verwerkt. Geen ESX, QBCore, SQL of nc-minimap vereist; ox_lib verzorgt de meldingen.
 
 ## Bijwerken naar 1.0.5
 1. Bewaar je huidige resource als backup buiten de actieve resources-map.
@@ -63,11 +63,11 @@ van deze bron en weigert afwijkende bestanden. De resource zelf heeft geen
 Python-afhankelijkheid. Publiceer nooit losse tools als serverdependencies.
 
 ## Postcodes
-- /poscode 001: gele GPS-route naar postcode 001. /poscode 1 werkt ook.
-- /poscode: toont de dichtstbijzijnde postcode.
-- /poscode uit: verwijdert alleen de routeblip van dit command.
+- /postcode 001: gele GPS-route naar postcode 001. /postcode 1 werkt ook.
+- /postcode: toont de dichtstbijzijnde postcode.
+- /postcode uit: verwijdert alleen de routeblip van dit command.
 946 unieke postcodes uit de bijbehorende kaartdataset zijn inbegrepen.
-De route blijft actief tot je een andere postcode kiest, /poscode uit gebruikt
+De route blijft actief tot je een andere postcode kiest, /postcode uit gebruikt
 of de resource stopt. Een eventuele eigen waypoint wordt niet gewist.
 
 ## HUD en probleemoplossing

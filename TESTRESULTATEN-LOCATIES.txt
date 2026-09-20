@@ -6,7 +6,7 @@ PASS: G na negeren, verlopen melding, vervangen melding en G/Backspace in dezelf
 PASS: bestaande route behouden bij ontvangst/negeren; uitsluitend G zet een waypoint.
 PASS: tijdelijke blip opruimen en NUI-handshake (geen herleving van genegeerde melding).
 PASS: afwezige/foutieve kaartprovider, postcode-afstandsgrens en optionele locatievelden.
-PASS: echte 946-postcodedataset, nearest-search, voorloopnullen, eigen gebiedsnaam en /poscode.
+PASS: echte 946-postcodedataset, nearest-search, voorloopnullen, eigen gebiedsnaam en /postcode.
 PASS: GitHub-checker zonder link, uitgeschakeld, hogere/gelijke/lagere versie, HTTP-fouten en timeout.
 PASS: nieuwe configvelden en ongeldige getallen; oude config kan ingebouwde defaults gebruiken.
 PASS: JavaScript-syntaxis en DOM-simulatie van tonen, verbergen, letterlijke tekst en verlopen.

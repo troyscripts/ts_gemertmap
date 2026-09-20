@@ -44,7 +44,7 @@ CreateThread(function()
         completed = true
         if status ~= 200 then log(('Updatecontrole mislukt (HTTP %s). Controleer repository, branch en version.txt.'):format(tostring(status))); return end
         local latest = version(body)
-        if not latest then log('Ongeldige versie op GitHub; verwacht bijvoorbeeld 1.0.6.'); return end
+        if not latest then log('Ongeldige versie op GitHub; verwacht bijvoorbeeld 1.0.7.'); return end
         local comparison = 0
         for i=1,3 do if latest[i] ~= installed[i] then comparison = latest[i] > installed[i] and 1 or -1; break end end
         if comparison > 0 then

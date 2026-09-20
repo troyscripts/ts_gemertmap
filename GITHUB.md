@@ -1,14 +1,13 @@
 # ts_gemertmap op GitHub plaatsen
 
-Deze update brengt de kaart naar 1.0.6 en bevat alvast een zelfstandige updatechecker.
-Er is nog geen repositorylink bekend; er is daarom geen adres ingevuld of gegokt.
+Deze versie brengt de kaart naar 1.0.7 en bevat een zelfstandige updatechecker.
 
 1. Maak je gewenste openbare GitHub-repository aan.
 2. Upload de INHOUD van de volledige, bijgewerkte map ts_gemertmap naar de hoofdmap
    van de repository. Alleen deze update-ZIP uploaden is geen complete installatie.
    Neem ook de bestaande stream-map, postcodes.json, credits en licentiebestanden mee.
 3. Zorg dat fxmanifest.lua en version.txt rechtstreeks in die hoofdmap staan.
-   Beide bevatten voor deze release versie 1.0.6.
+   Beide bevatten voor deze release versie 1.0.7.
 4. Vul lokaal en in je repository Config.UpdateCheck.Repository in met de echte
    eigenaar/repository, zonder https://github.com/ ervoor. Vul de juiste branch in.
 5. Herstart ts_gemertmap en controleer de console.

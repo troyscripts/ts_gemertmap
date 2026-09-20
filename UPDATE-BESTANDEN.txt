@@ -1,6 +1,6 @@
-Update ts_gemertmap 1.0.5 naar 1.0.6. Alleen gewijzigde/nieuwe bestanden.
+Update ts_gemertmap 1.0.6 naar 1.0.7.
 Kopieer over de bestaande installatie; laat overige bestanden staan.
-Geen bestanden verwijderen. Neem eigen instellingen over in de nieuwe config.
+Geen bestanden verwijderen. config.lua is niet gewijzigd.
 
 CHANGELOG.md
 GITHUB.md
