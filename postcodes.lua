@@ -63,7 +63,7 @@ exports('GetLocation', function(coords)
     return { area = name, zone = zone, postcode = nearestAt(coords) }
 end)
 
-RegisterCommand('poscode', function(_, args)
+RegisterCommand('postcode', function(_, args)
     local input = args[1]
     if input and input:lower() == 'uit' then
         clearRoute()
@@ -77,13 +77,13 @@ RegisterCommand('poscode', function(_, args)
     if not input then
         local coords = GetEntityCoords(PlayerPedId())
         local nearest = nearestAt(coords)
-        notify(('Dichtstbijzijnde postcode: %s. Gebruik /poscode [nummer] voor een route.'):format(nearest.code))
+        notify(('Dichtstbijzijnde postcode: %s. Gebruik /postcode [nummer] voor een route.'):format(nearest.code))
         return
     end
     local key = normalize(input)
     local postal = key and lookup[key]
     if not postal or #args > 1 then
-        notify('Onbekende postcode. Gebruik /poscode [nummer] of /poscode uit.')
+        notify('Onbekende postcode. Gebruik /postcode [nummer] of /postcode uit.')
         return
     end
     clearRoute()
