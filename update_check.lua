@@ -9,8 +9,8 @@ local function version(value)
     return parts
 end
 CreateThread(function()
-    if Config.Version ~= '1.0.6' then
-        log('Configschema 1.0.6 vereist. Neem de nieuwe UpdateCheck-instellingen over; eigen kaartnamen behouden.')
+    if Config.Version ~= '1.0.8' then
+        log('Configschema 1.0.8 vereist. Neem Config.StartupMessage over en zet Config.Version op 1.0.8; eigen kaartnamen behouden.')
     end
     local settings = Config.UpdateCheck
     if settings == nil then log('Updatecontrole nog niet ingesteld: voeg Config.UpdateCheck toe.'); return end

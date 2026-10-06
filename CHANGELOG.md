@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.8
+
+- Config.StartupMessage kiest full (logo en informatie), compact (alleen versieregel) of off.
+- Standaard blijft de uitgebreide opstartmelding actief.
+- Ontbrekende instelling gebruikt full; ongeldige waarden geven een waarschuwing en gebruiken full.
+- Configschema verhoogd naar 1.0.8 vanwege de nieuwe instelling.
+- Updatecontrole blijft afzonderlijk instelbaar via Config.UpdateCheck.
+
 ## 1.0.7
 
 - Alle postcodeberichten lopen nu via ox_lib-notificaties.
