@@ -18,7 +18,7 @@ CreateThread(function()
         log('Ongeldige Config.UpdateCheck; controle overgeslagen.'); return
     end
     if not settings.Enabled then return end
-    if settings.Repository == '' then
+    if settings.Repository == 'https://github.com/troyscripts/ts_gemertmap' then
         log('GitHub nog niet ingesteld. Vul later Config.UpdateCheck.Repository in als eigenaar/repository.'); return
     end
     local owner, repo
