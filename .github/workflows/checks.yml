@@ -1,0 +1,59 @@
+name: Gemertmap controles en compleet ZIP
+on: [push, pull_request]
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout volledige resource
+        uses: actions/checkout@v4
+      - name: Installeer Lua 5.4
+        run: sudo apt-get update && sudo apt-get install -y lua5.4
+      - name: Controleer mappen, manifest, postcodegegevens en mapassets
+        run: python3 tests/check_package.py
+      - name: Controleer Lua-syntax
+        run: |
+          set -eu
+          find client server config -type f -name '*.lua' -print0 | while IFS= read -r -d '' file; do
+            luac5.4 -p "$file"
+          done
+      - name: Controleer Python-buildscript
+        run: |
+          python3 - <<'PYTHON'
+          import ast
+          from pathlib import Path
+          ast.parse(Path("tools/build_map.py").read_text(encoding="utf-8"))
+          print("Python syntax OK")
+          PYTHON
+      - name: Bouw volledig installatiepakket
+        run: |
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+
+          package = Path("ts_gemertmap_1.0.9_compleet.zip")
+          with ZipFile(package, "w", ZIP_DEFLATED, compresslevel=6, allowZip64=True) as out:
+              for path in sorted(Path(".").rglob("*")):
+                  if not path.is_file() or path == package:
+                      continue
+                  if any(part in (".git", ".github", "__pycache__") for part in path.parts):
+                      continue
+                  out.write(path, "ts_gemertmap/" + path.as_posix())
+          with ZipFile(package, "r") as built:
+              assert built.testzip() is None, "Corrupted ZIP entry"
+              files = built.namelist()
+              assert len([p for p in files if p.startswith("ts_gemertmap/stream/")]) == 78
+              assert "ts_gemertmap/fxmanifest.lua" in files
+              assert "ts_gemertmap/data/postcodes.json" in files
+              assert "ts_gemertmap/LICENSE-Oulsen.txt" in files
+          print("Volledige ts_gemertmap resource gereed:", package, package.stat().st_size, "bytes")
+          PYTHON
+      - name: Publiceer volledige ts_gemertmap ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: ts_gemertmap_1.0.9_compleet
+          path: ts_gemertmap_1.0.9_compleet.zip
+          if-no-files-found: error
+          retention-days: 30

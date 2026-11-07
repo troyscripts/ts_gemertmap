@@ -57,7 +57,7 @@ def main():
     ap.add_argument('--output',type=Path,required=True);ap.add_argument('--preview',type=Path,required=True)
     args=ap.parse_args();assert args.source.resolve()!=args.output.resolve(),'Separate input and output required'
     args.output.mkdir(parents=True,exist_ok=True);args.preview.mkdir(parents=True,exist_ok=True)
-    labels=json.loads((ROOT/'kaartnamen.json').read_text())
+    labels=json.loads((ROOT/'data/kaartnamen.json').read_text())
     records=[]
     for row in range(3):
         for col in range(2):

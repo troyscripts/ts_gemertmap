@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.9 — 2026-11-07 — Volledig pakket en mappenstructuur
+
+- Volledige resource ingedeeld in `config/`, `client/`, `server/`, `data/` en `docs/`.
+- `fxmanifest.lua` bijgewerkt voor `data/postcodes.json`, nieuwe Lua-paden en ongewijzigde laadvolgorde.
+- Postcode-loader, foutmeldingen en kaartlabelbouwscript bijgewerkt voor de nieuwe datapaden.
+- Alle 78 FiveM-kaartbestanden blijven ongewijzigd in de automatische `stream/`-map; oorspronkelijke licentie en credits behouden.
+- README, installatiehandleiding, GitHub-instructies en controlehandleiding bijgewerkt; oude update- en testbestanden gearchiveerd.
+- CI-controles en complete ZIP-distributie toegevoegd.
+- Scriptversie verhoogd van `1.0.8` naar `1.0.9`; configschema `1.0.8` blijft behouden.
+- Geen wijziging aan postcodegegevens, ingebakken labels, gameplay, commands, exports of streamingassets.
+
 ## 1.0.8
 
 - Config.StartupMessage kiest full (logo en informatie), compact (alleen versieregel) of off.

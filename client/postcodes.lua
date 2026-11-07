@@ -22,7 +22,7 @@ local function clearRoute()
     end
 end
 
-local raw = LoadResourceFile(GetCurrentResourceName(), 'postcodes.json')
+local raw = LoadResourceFile(GetCurrentResourceName(), 'data/postcodes.json')
 local ok, data = pcall(json.decode, raw or '')
 if ok and type(data) == 'table' then
     for _, postal in ipairs(data) do
@@ -35,7 +35,7 @@ if ok and type(data) == 'table' then
         end
     end
 else
-    print('[ts_gemertmap] postcodes.json ontbreekt of bevat ongeldige JSON.')
+    print('[ts_gemertmap] data/postcodes.json ontbreekt of bevat ongeldige JSON.')
 end
 
 -- Clientexports gebruiken de incidentpositie, nooit impliciet de eigen speler.
@@ -74,7 +74,7 @@ RegisterCommand('postcode', function(_, args)
         return
     end
     if #postcodes == 0 then
-        notify('Postcodes zijn niet beschikbaar. Controleer postcodes.json.', 'error')
+        notify('Postcodes zijn niet beschikbaar. Controleer data/postcodes.json.', 'error')
         return
     end
     if not input then
