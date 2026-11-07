@@ -1,97 +1,56 @@
-# Actuele versie: ts_gemertmap 1.0.7
+# Troy Scripts — ts_gemertmap 1.0.9
 
-Lees UPDATE-INSTALLATIE.md voor deze update en GITHUB.md voor het publiceren en
-De scriptversie is 1.0.7. Het configschema blijft 1.0.6, omdat deze update geen nieuwe instellingen toevoegt.
-Nieuwe clientexports geven de kaartgebiedsnaam en dichtstbijzijnde postcode aan
-politiemeldingen in ts_bridge 0.0.6. Voor gebruikersmeldingen is ox_lib vereist.
+Satellietkaart voor **Gemert Roleplay** met Nederlandse gebiedsnamen, kaartlabels, GPS-postcodes en clientexports voor incidentlocaties. Deze repository bevat de **volledige FiveM-resource**, inclusief alle originele kaarttextures in `stream/`.
 
-Dit pakket bevat alleen wijzigingen; bestaande kaarttextures en postcodegegevens
-blijven staan. Hieronder staat de oorspronkelijke kaartdocumentatie van 1.0.5.
+**Scriptversie:** `1.0.9` · **Configschema:** `1.0.8` (ongewijzigd) · **Dependency:** `ox_lib`. De resource is zelfstandig; `ts_bridge` kan de locatieexports optioneel gebruiken.
 
-# ts_gemertmap — Gemert RP — 1.0.5
+## Download en installatie
 
-Zelfstandige FiveM-resource met satellietkaart voor minimap en grote pauzemap.
-46 Nederlandse plaats- en wijknamen zijn nu daadwerkelijk in de kaarttexturen
-verwerkt. Geen ESX, QBCore, SQL of nc-minimap vereist; ox_lib verzorgt de meldingen.
+Gebruik het complete ZIP-pakket dat door GitHub Actions wordt gebouwd, of download na samenvoegen de hele repository. Pak het pakket uit zodat de resourcemap precies **`ts_gemertmap`** heet. Maak eerst een back-up van je eigen configuratie.
 
-## Bijwerken naar 1.0.5
-1. Bewaar je huidige resource als backup buiten de actieve resources-map.
-2. Vervang de bestanden van ts_gemertmap door deze versie, inclusief stream.
-   Eigen aanpassingen in config.lua kun je behouden.
-3. Herstart de server en sluit FiveM volledig af voordat je opnieuw verbindt.
-   Een resource-restart alleen is geen betrouwbare test voor vervangen texturen.
-4. Open de grote ESC-kaart en zoom bijvoorbeeld op de stad of Bakel in.
-   Dezelfde kaartopschriften verschijnen op de minimap wanneer dat gebied in beeld is.
+De instellingen staan vanaf 1.0.9 in `config/config.lua`. Neem je bestaande `Config.ZoneNames`, `Config.Points`, zoominstellingen en updatecontrole-instellingen over. **Laat `Config.Version = '1.0.8'` staan**: de configstructuur is niet veranderd.
 
-## Eerste installatie
-1. Zet de map ts_gemertmap in resources/[standalone].
-2. Gebruik slechts één pakket dat dezelfde GTA-minimapassets streamt.
-   Controleer op dubbele minimap*.ytd, minimap*.ydd en minimap.gfx.
-   Laat nc-minimap staan als een telefoonapp daarvan afhankelijk is en het
-   geen conflicterende GTA-kaartassets levert.
-3. Voeg na je HUD-startregel aan server.cfg toe:
+```cfg
+ensure ox_lib
+ensure ts_gemertmap
+```
 
-   ensure ts_gemertmap
+Zie [INSTALLATIE.md](docs/INSTALLATIE.md) en [STRUCTUUR.md](docs/STRUCTUUR.md). Bij het vervangen van kaarttextures is een volledige serverherstart en opnieuw verbinden in FiveM aanbevolen; een losse resource-restart toont niet noodzakelijk de nieuwe textures.
 
-4. Herstart de server en verbind opnieuw.
+## Kaart en originele assets
 
-## Nederlandse kaartnamen
-Voorbeelden: Gemert Centrum, Gemert Binnenstad, Bakel, Boekel, De Mortel,
-Elsendorp, Grachtenwijk, Gemert Airport en Haventerminal.
-Deze namen zijn vaste opschriften IN de kaart, geen jobblips of HUD-tekstlaag.
-Je hoeft ze niet via een menu in te schakelen. De grootte hangt af van je zoom.
-Nederlandse namen zijn toegevoegd; de kleine Engelse straatnamen en overige
-opschriften uit de oorspronkelijke satellietkaart zijn niet allemaal verwijderd
-of vertaald. Het is de GTA-wereld met RP-namen, geen echte kaart van Nederland.
+De `stream/`-map blijft in de resourcehoofdmap. FiveM streamt de `.ytd`- en `.ydd`-bestanden zonder extra manifestentries. **Deze onderhoudsrelease wijzigt geen enkel streambestand.** De oorspronkelijke satellietkaart is afkomstig van Oulsen; zie [CREDITS.md](docs/CREDITS.md) en [LICENSE-Oulsen.txt](LICENSE-Oulsen.txt). De labels in de gebakken kaarttexture zijn onafhankelijk van `Config.ZoneNames` in de GTA-UI.
 
-config.lua bevat daarnaast de dynamische Nederlandse GTA-gebiedsteksten.
-Een HUD met een eigen namenlijst kan deze negeren. Config.ZoneNames wijzigen
-of Config.DutchZoneNames uitschakelen verandert NIET de ingebakken kaartnamen.
-Die vaste namen en hun plaatsing zijn vastgelegd in kaartnamen.json.
+Postcodecoördinaten staan in `data/postcodes.json` (946 posten). Vast ingebakken kaartnamen worden voor ontwikkelaars beheerd in `data/kaartnamen.json` (46 labels). `tools/build_map.py` is een optionele buildtool; hij is **niet** nodig bij normaal gebruik.
 
-## Eigen kaartnamen bouwen (optioneel, voor ontwikkelaars)
-Het script tools/build_map.py is niet nodig om deze resource te gebruiken.
-Het bouwt de vaste opschriften opnieuw uit kaartnamen.json en de oorspronkelijke
-Oulsen nogrid YTD-bestanden. Gebruik daarvoor Python 3, Pillow 12 of nieuwer,
-numpy en matplotlib. Bewaar een originele bronmap; voer nooit reeds gelabelde
-textures in, anders worden labels dubbel ingebakken.
+## Commando's
 
-python tools/build_map.py --source PAD_NAAR_ORIGINELE_NOGRID --output stream --preview voorbeelden
+| Commando | Gedrag |
+| --- | --- |
+| `/postcode` | Dichtstbijzijnde postcode van je huidige positie |
+| `/postcode 001` | Gele GPS-route naar postcode 001; `/postcode 1` werkt ook |
+| `/postcode uit` | Verwijdert uitsluitend de door het postcodecommando gemaakte route |
+| `/gemertmapreset` | Past de ingestelde radarzoom opnieuw toe; wist geen cache |
 
-De builder ondersteunt uitsluitend het gecontroleerde 4096x4096 DXT5-formaat
-van deze bron en weigert afwijkende bestanden. De resource zelf heeft geen
-Python-afhankelijkheid. Publiceer nooit losse tools als serverdependencies.
+Meldingen van `/postcode` gebruiken `ox_lib`. Eigen waypointinstellingen worden niet ongevraagd verwijderd.
 
-## Postcodes
-- /postcode 001: gele GPS-route naar postcode 001. /postcode 1 werkt ook.
-- /postcode: toont de dichtstbijzijnde postcode.
-- /postcode uit: verwijdert alleen de routeblip van dit command.
-946 unieke postcodes uit de bijbehorende kaartdataset zijn inbegrepen.
-De route blijft actief tot je een andere postcode kiest, /postcode uit gebruikt
-of de resource stopt. Een eventuele eigen waypoint wordt niet gewist.
+## Exports voor andere resources
 
-## HUD en probleemoplossing
-De HUD blijft verantwoordelijk voor positie, vorm, schaal en zichtbaarheid.
-Dit pakket levert satellietkaartassets en de bijbehorende radarzoom.
-Bij flikkeren of een ontbrekende kaart: controleer andere resources op
-SetRadarZoom, SetMapZoomDataLevel, SetRadarAsInteriorThisFrame en dubbele
-minimap.gfx-bestanden. Schakel alleen de conflicterende kaartfunctie uit.
-/gemertmapreset stelt de radarzoom opnieuw in; het wist geen cache of data.
-Cayo Perico en andere extra eilandkaarten zijn niet toegevoegd of getest.
+De clientexports blijven **ongewijzigd**:
 
-## Terugzetten
-Verwijder de ensure-regel, herstel je eerdere kaartpakket en herstart de server.
-Laat spelers opnieuw verbinden. Bij live stoppen worden onbekende zoomwaarden
-van andere HUDs niet automatisch hersteld.
+```lua
+local postcode = exports.ts_gemertmap:GetNearestPostcode(coords)
+local locatie = exports.ts_gemertmap:GetLocation(coords)
+```
 
-## Validatie
-Zie CONTROLE.txt en texture-checks.json. De gewijzigde YTD-bestanden zijn opnieuw
-uitgelezen; structuur en compressieblokken buiten de labels zijn gecontroleerd.
-Voorbeelden zijn gemaakt uit de daadwerkelijk verpakte textuurdata.
-Er is hier geen FiveM-client: controleer deze texture-update nog in het spel.
+Beide gebruiken de **meegegeven coördinaten** (bijvoorbeeld de incidentpositie), niet automatisch die van de speler. De tweede export geeft `area`, `zone` en `postcode` terug. De optionele koppeling met `ts_bridge` voor incidentmeldingen blijft bestaan.
 
-## Opstartmelding
-Bij het starten van deze resource verschijnt een groot lichtblauw TroyScripts
-ASCII-logo, gevolgd door de resourcegegevens, in de
-serverconsole met de resourcenaam en versie uit fxmanifest.lua. Deze melding
-bevestigt dat de resource start; het is geen controle van de kaart op clients.
+## Installatiebestanden en documentatie
+
+De hoofdmap bevat `fxmanifest.lua`, `version.txt`, deze README en de originele licentie. De code staat in `client/`, `server/`, instellingen in `config/`, postcode- en kaartnaamdata in `data/`, kaartassets in `stream/` en documentatie in `docs/`. Historische updatebestanden staan in `docs/historie/`.
+
+Meer informatie: [CHANGELOG.md](docs/CHANGELOG.md), [GITHUB.md](docs/GITHUB.md) en [CONTROLE.md](docs/CONTROLE.md).
+
+## Verificatie
+
+GitHub Actions controleert de laadpaden, versies, Lua-syntax, JSON-data en de **aanwezigheid** van alle 78 gestreamde kaartbestanden. Ook wordt een volledig installatie-ZIP gemaakt. De binaire kaartbestanden zijn bij deze herindeling op GitHub met hun oorspronkelijke blob-SHA behouden. Deze checks vervangen geen visuele FiveM-test. Controleer na installatie minimap, ESC-kaart, alle postcodecommando's en de `ts_bridge`-locatieexports op een testserver.
