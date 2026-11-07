@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 — 2026-11-07 — Radar en GitHub in één onderhoudsupdate
+
+- Radarzoom wordt standaard ingesteld bij start, respawn en `/gemertmapreset`, zonder onnodige tiensecondenloop.
+- `Config.ZoomRefreshMs = 0` is de nieuwe standaard; waarden van 1000–300000 behouden optioneel de periodieke compatibiliteitsmodus voor HUDs die zoom overschrijven.
+- Updatechecker gebruikt standaard `troyscripts/ts_gemertmap`; een bewust lege repository toont een duidelijke melding zonder HTTP-aanvraag.
+- Configschema naar `1.0.9` vanwege de nieuwe standaardinstellingen; scriptversie naar `1.1.0`.
+- Kaarttextures, postcodegegevens, exports en commando's ongewijzigd.
+- Automatische regressietest voor radarreset en GitHub-check.
+
 ## 1.0.9 — 2026-11-07 — Volledig pakket en mappenstructuur
 
 - Volledige resource ingedeeld in `config/`, `client/`, `server/`, `data/` en `docs/`.

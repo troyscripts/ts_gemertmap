@@ -1,14 +1,16 @@
 Config = {}
-Config.Version = '1.0.8' -- configschema; alleen veranderen bij nieuwe instellingen
+Config.Version = '1.0.9' -- configschema; alleen veranderen bij nieuwe instellingen
 -- Opstartmelding: 'full' = logo en informatie, 'compact' = alleen versieregel, 'off' = uit.
 Config.StartupMessage = 'compact'
 
--- Vul later de echte GitHub owner/repository in. Leeg = nog geen netwerkcontrole.
-Config.UpdateCheck = { Enabled = true, Repository = '', Branch = 'main' }
+-- De officiële GitHub-repository is vooraf ingevuld; false schakelt de check uit.
+Config.UpdateCheck = { Enabled = true, Repository = 'troyscripts/ts_gemertmap', Branch = 'main' }
 
--- Atlas vereist eigen zoomwaarden. Laat andere resources deze niet overschrijven.
+-- Radarzoom één keer bij start, respawn en /gemertmapreset.
+-- 0 = niet periodiek forceren (aanbevolen bij HUDs). >= 1000 = oude periodieke modus,
+-- alleen inschakelen als je HUD de zoom steeds aantoonbaar overschrijft.
 Config.RadarZoom = 1100
-Config.ZoomRefreshMs = 10000
+Config.ZoomRefreshMs = 0
 Config.DutchZoneNames = true
 -- Dit zijn RP-namen, geen geografische reconstructie van Nederland.
 -- Werkt in UI die GTA-gebiedsteksten gebruikt; geen wijziging van straatnamen.

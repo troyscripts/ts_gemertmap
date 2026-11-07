@@ -23,10 +23,20 @@ CreateThread(function()
         AddTextComponentSubstringPlayerName(point.label)
         EndTextCommandSetBlipName(blip)
     end
-    while true do
-        Wait(math.max(1000, tonumber(Config.ZoomRefreshMs) or 10000))
-        SetRadarZoom(Config.RadarZoom)
+    -- Alleen in expliciet ingestelde compatibiliteitsmodus blijven herhalen.
+    -- Normaal niet meer elke tien seconden met HUD/radarresources concurreren.
+    local refresh = tonumber(Config.ZoomRefreshMs) or 0
+    if refresh >= 1000 and refresh <= 300000 then
+        while true do
+            Wait(refresh)
+            applyAtlasZoom()
+        end
     end
+end)
+
+-- Na een respawn kan een HUD of spawnresource de radar opnieuw instellen.
+AddEventHandler('playerSpawned', function()
+    applyAtlasZoom()
 end)
 
 -- Handmatig opnieuw instellen; geen claim dat dit ieder ontbrekend-kaartprobleem oplost.

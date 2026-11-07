@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static package verification for ts_gemertmap 1.0.9; does not require FiveM."""
+"""Static package verification for ts_gemertmap 1.1.0; does not require FiveM."""
 from pathlib import Path
 import json
 import math
@@ -8,7 +8,7 @@ import re
 root = Path(__file__).resolve().parent.parent
 manifest = (root / "fxmanifest.lua").read_text(encoding="utf-8")
 version = re.search(r"^version\s+['\"]([^'\"]+)['\"]", manifest, re.M)
-assert version and version.group(1) == "1.0.9", "fxmanifest version mismatch"
+assert version and version.group(1) == "1.1.0", "fxmanifest version mismatch"
 assert (root / "version.txt").read_text(encoding="utf-8").strip() == version.group(1), "version.txt mismatch"
 assert re.search(r"this_is_a_map\s+['\"]yes['\"]", manifest), "map manifest flag missing"
 assert "dependency 'ox_lib'" in manifest, "ox_lib dependency missing"
@@ -33,7 +33,7 @@ for old_path in ("client.lua", "postcodes.lua", "server.lua", "update_check.lua"
     assert not (root / old_path).exists(), f"old file left at root: {old_path}"
 
 config = (root / "config/config.lua").read_text(encoding="utf-8")
-assert re.search(r"Config\.Version\s*=\s*'1\.0\.8'", config), "Config.Version changed unnecessarily"
+assert re.search(r"Config\.Version\s*=\s*'1\.0\.9'", config), "Config.Version moet bij nieuwe defaults 1.0.9 zijn"
 loader = (root / "client/postcodes.lua").read_text(encoding="utf-8")
 assert "LoadResourceFile(GetCurrentResourceName(), 'data/postcodes.json')" in loader, "postcode loader path missing"
 assert "exports('GetNearestPostcode'" in loader and "exports('GetLocation'" in loader, "location exports altered"
@@ -43,6 +43,9 @@ assert "(ROOT/'data/kaartnamen.json')" in (root / "tools/build_map.py").read_tex
 
 postcodes = json.loads((root / "data/postcodes.json").read_text(encoding="utf-8"))
 labels = json.loads((root / "data/kaartnamen.json").read_text(encoding="utf-8"))
+assert "Config.ZoomRefreshMs = 0" in config, "radar refresh default should be disabled"
+assert "Repository = 'troyscripts/ts_gemertmap'" in config, "default GitHub repository missing"
+assert "AddEventHandler('playerSpawned'" in (root / "client/main.lua").read_text(), "respawn zoom hook missing"
 assert len(postcodes) == 946, f"expected 946 postcodes, got {len(postcodes)}"
 assert len(labels) == 46, f"expected 46 map labels, got {len(labels)}"
 keys = set()
