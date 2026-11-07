@@ -1,4 +1,4 @@
-# Installatie — ts_gemertmap 1.0.9
+# Installatie — ts_gemertmap 1.1.0
 
 Deze versie is een **volledig pakket** inclusief kaarttextures, niet de eerdere gedeeltelijke update.
 
@@ -13,8 +13,8 @@ Deze versie is een **volledig pakket** inclusief kaarttextures, niet de eerdere 
 1. Maak een back-up van je huidige `ts_gemertmap`-resource en vooral je eigen `config.lua` of `config/config.lua`.
 2. Zet alle andere resources die dezelfde GTA-minimapassets streamen uit om conflicten te vermijden. Controleer vóór installatie welke resources ook `minimap*.ytd`, `minimap*.ydd` of `minimap.gfx` gebruiken. Verwijder niet zomaar resources waarvan andere scripts afhankelijk zijn.
 3. Stop `ts_gemertmap`. Verwijder na de back-up de volledige oude resourcemap, zodat verplaatste rootbestanden niet blijven staan.
-4. Pak `ts_gemertmap_1.0.9_compleet.zip` uit onder `resources/`; de resourcemap moet `ts_gemertmap` heten. Controleer dat de map direct `fxmanifest.lua` en `stream/` bevat.
-5. Neem je persoonlijke instellingen over in **`config/config.lua`**: `Config.ZoneNames`, `Config.Points`, `RadarZoom`, `UpdateCheck` en `StartupMessage`. Het configuratieschema blijft **1.0.8**.
+4. Pak `ts_gemertmap_1.1.0_compleet.zip` uit onder `resources/`; de resourcemap moet `ts_gemertmap` heten. Controleer dat de map direct `fxmanifest.lua` en `stream/` bevat.
+5. Neem je persoonlijke instellingen over in **`config/config.lua`**: `Config.ZoneNames`, `Config.Points`, `RadarZoom`, `UpdateCheck` en `StartupMessage`. Het configuratieschema is nu **1.0.9**.
 6. Zorg dat `server.cfg` de juiste volgorde gebruikt:
    ```cfg
    ensure ox_lib
@@ -37,4 +37,8 @@ Het `fxmanifest.lua` bevat `this_is_a_map 'yes'` en registreert `data/postcodes.
 
 Stop de resource, verwijder de nieuwe map en herstel de hele oorspronkelijke map vanuit je back-up. Start de server volledig opnieuw en verbind opnieuw.
 
-Lees [STRUCTUUR.md](STRUCTUUR.md) en [CONTROLE.md](CONTROLE.md) voor extra uitleg. Historische instructies uit `docs/historie/` zijn niet geschikt als volledige 1.0.9-installatie.
+Lees [STRUCTUUR.md](STRUCTUUR.md) en [CONTROLE.md](CONTROLE.md) voor extra uitleg. Historische instructies uit `docs/historie/` zijn niet geschikt als volledige 1.1.0-installatie.
+
+## Gecombineerde radar- en updatecheckerupdate
+
+Voor scriptversie 1.1.0 neem je in `config/config.lua` over: `Config.ZoomRefreshMs = 0` (geen periodieke zoomoverride) en `Config.UpdateCheck.Repository = 'troyscripts/ts_gemertmap'`. Na het overnemen van deze nieuwe standaarden zet je `Config.Version = '1.0.9'`. Eigen gebiedsnamen/POI's behouden. Oudere configs met een periodieke `ZoomRefreshMs=10000` blijven werken maar zijn bij HUD-zoomproblemen niet aanbevolen.

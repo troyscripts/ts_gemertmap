@@ -19,6 +19,8 @@ jobs:
           find client server config -type f -name '*.lua' -print0 | while IFS= read -r -d '' file; do
             luac5.4 -p "$file"
           done
+      - name: Test gecombineerde radar- en versiecheckerupdate
+        run: lua5.4 tests/maintenance_spec.lua
       - name: Controleer Python-buildscript
         run: |
           python3 - <<'PYTHON'
@@ -33,7 +35,7 @@ jobs:
           from pathlib import Path
           from zipfile import ZipFile, ZIP_DEFLATED
 
-          package = Path("ts_gemertmap_1.0.9_compleet.zip")
+          package = Path("ts_gemertmap_1.1.0_compleet.zip")
           with ZipFile(package, "w", ZIP_DEFLATED, compresslevel=6, allowZip64=True) as out:
               for path in sorted(Path(".").rglob("*")):
                   if not path.is_file() or path == package:
@@ -53,7 +55,7 @@ jobs:
       - name: Publiceer volledige ts_gemertmap ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: ts_gemertmap_1.0.9_compleet
-          path: ts_gemertmap_1.0.9_compleet.zip
+          name: ts_gemertmap_1.1.0_compleet
+          path: ts_gemertmap_1.1.0_compleet.zip
           if-no-files-found: error
           retention-days: 30

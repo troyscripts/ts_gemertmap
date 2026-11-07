@@ -9,8 +9,8 @@ local function version(value)
     return parts
 end
 CreateThread(function()
-    if Config.Version ~= '1.0.8' then
-        log('Configschema 1.0.8 vereist. Neem Config.StartupMessage over en zet Config.Version op 1.0.8; eigen kaartnamen behouden.')
+    if Config.Version ~= '1.0.9' then
+        log('Configschema 1.0.9 vereist. Neem radarinstelling ZoomRefreshMs en GitHub-repository over; behoud eigen kaartnamen.')
     end
     local settings = Config.UpdateCheck
     if settings == nil then log('Updatecontrole nog niet ingesteld: voeg Config.UpdateCheck toe.'); return end
@@ -18,8 +18,9 @@ CreateThread(function()
         log('Ongeldige Config.UpdateCheck; controle overgeslagen.'); return
     end
     if not settings.Enabled then return end
-    if settings.Repository == 'https://github.com/troyscripts/ts_gemertmap' then
-        log('GitHub nog niet ingesteld. Vul later Config.UpdateCheck.Repository in als eigenaar/repository.'); return
+    if settings.Repository == nil or settings.Repository == '' then
+        log('GitHub-updatecontrole overgeslagen: vul eigenaar/repository in of zet Enabled=false.')
+        return
     end
     local owner, repo
     if type(settings.Repository) == 'string' then owner, repo = settings.Repository:match('^([%w][%w-]*)/([%w_.-]+)$') end
@@ -44,7 +45,7 @@ CreateThread(function()
         completed = true
         if status ~= 200 then log(('Updatecontrole mislukt (HTTP %s). Controleer repository, branch en version.txt.'):format(tostring(status))); return end
         local latest = version(body)
-        if not latest then log('Ongeldige versie op GitHub; verwacht bijvoorbeeld 1.0.7.'); return end
+        if not latest then log('Ongeldige versie op GitHub; verwacht bijvoorbeeld 1.1.0.'); return end
         local comparison = 0
         for i=1,3 do if latest[i] ~= installed[i] then comparison = latest[i] > installed[i] and 1 or -1; break end end
         if comparison > 0 then

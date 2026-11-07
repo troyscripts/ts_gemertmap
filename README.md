@@ -1,14 +1,14 @@
-# Troy Scripts — ts_gemertmap 1.0.9
+# Troy Scripts — ts_gemertmap 1.1.0
 
 Satellietkaart voor **Gemert Roleplay** met Nederlandse gebiedsnamen, kaartlabels, GPS-postcodes en clientexports voor incidentlocaties. Deze repository bevat de **volledige FiveM-resource**, inclusief alle originele kaarttextures in `stream/`.
 
-**Scriptversie:** `1.0.9` · **Configschema:** `1.0.8` (ongewijzigd) · **Dependency:** `ox_lib`. De resource is zelfstandig; `ts_bridge` kan de locatieexports optioneel gebruiken.
+**Scriptversie:** `1.1.0` · **Configschema:** `1.0.9` (ongewijzigd) · **Dependency:** `ox_lib`. De resource is zelfstandig; `ts_bridge` kan de locatieexports optioneel gebruiken.
 
 ## Download en installatie
 
 Gebruik het complete ZIP-pakket dat door GitHub Actions wordt gebouwd, of download na samenvoegen de hele repository. Pak het pakket uit zodat de resourcemap precies **`ts_gemertmap`** heet. Maak eerst een back-up van je eigen configuratie.
 
-De instellingen staan vanaf 1.0.9 in `config/config.lua`. Neem je bestaande `Config.ZoneNames`, `Config.Points`, zoominstellingen en updatecontrole-instellingen over. **Laat `Config.Version = '1.0.8'` staan**: de configstructuur is niet veranderd.
+De instellingen staan vanaf 1.0.9 in `config/config.lua`. Neem je bestaande `Config.ZoneNames`, `Config.Points`, zoominstellingen en updatecontrole-instellingen over. **Laat `Config.Version = '1.0.9'` staan**: de configstructuur is niet veranderd.
 
 ```cfg
 ensure ox_lib
@@ -16,6 +16,12 @@ ensure ts_gemertmap
 ```
 
 Zie [INSTALLATIE.md](docs/INSTALLATIE.md) en [STRUCTUUR.md](docs/STRUCTUUR.md). Bij het vervangen van kaarttextures is een volledige serverherstart en opnieuw verbinden in FiveM aanbevolen; een losse resource-restart toont niet noodzakelijk de nieuwe textures.
+
+## Radar en updatechecker (1.1.0)
+
+De zoom wordt standaard **eenmalig bij start**, na een spelerrespawn en via `/gemertmapreset` gezet. `Config.ZoomRefreshMs = 0` voorkomt dat de resource elke tien seconden concurrerend een HUD-zoom overschrijft. Voor compatibiliteit kun je een waarde vanaf 1000 milliseconden gebruiken (maximaal 300000) als je dit écht nodig hebt; bestaande configuraties met 10000 blijven werken.
+
+De GitHub-versiechecker gebruikt standaard `troyscripts/ts_gemertmap`. Met `Config.UpdateCheck.Enabled=false` blijft deze uitgeschakeld. Deze gecombineerde update heeft configschema **1.0.9**: neem de gewijzigde velden over voordat je de versie in je configuratie bijwerkt.
 
 ## Kaart en originele assets
 
