@@ -33,7 +33,7 @@ for old_path in ("client.lua", "postcodes.lua", "server.lua", "update_check.lua"
     assert not (root / old_path).exists(), f"old file left at root: {old_path}"
 
 config = (root / "config/config.lua").read_text(encoding="utf-8")
-assert re.search(r"Config\.Version\s*=\s*'1\.0\.8'", config), "Config.Version changed unnecessarily"
+assert re.search(r"Config\.Version\s*=\s*'1\.0\.9'", config), "Config.Version moet bij nieuwe defaults 1.0.9 zijn"
 loader = (root / "client/postcodes.lua").read_text(encoding="utf-8")
 assert "LoadResourceFile(GetCurrentResourceName(), 'data/postcodes.json')" in loader, "postcode loader path missing"
 assert "exports('GetNearestPostcode'" in loader and "exports('GetLocation'" in loader, "location exports altered"
